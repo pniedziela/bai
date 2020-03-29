@@ -3,11 +3,37 @@
 	<head>
 		<title>Create DOM elements</title>
 		<meta charset="UTF-8">
+		<style>
+			table{
+				width: 400px;
+				height: 70px;
+				text-align: center;
+			}
+
+		</style>
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
-			
+			var table = document.createElement("table");
+			var row = table.insertRow(0);
+			var cell = row.insertCell(0);
+			cell.innerHTML = '1';
+			cell.style.border = "1px solid black";
+			var cell = row.insertCell(1);
+			cell.innerHTML = '2';
+			cell.style.border = "1px solid black";
+
+			var row = table.insertRow(1);
+			var cell = row.insertCell(0);
+			cell.innerHTML = '3';
+			cell.style.border = "1px solid black";
+			var cell = row.insertCell(1);
+			cell.innerHTML = '4';
+			cell.style.border = "1px solid black";
+
+
+			var element = document.body;
+			element.appendChild(table);
 		</script>
 	</body>
 </html>

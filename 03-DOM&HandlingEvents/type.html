@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Typing test</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
-		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
-		I spójrzałem na pole; dwieście armat grzmiało.<br>
-		Artyleryi ruskiej ciągną się szeregi,<br>
-		Prosto, długo, daleko, jako morza brzegi;<br>
-		I widziałem ich wodza: przybiegł, mieczem skinął<br>
-		I jak ptak jedno skrzydło wojska swego zwinął;<br>
-		Wylewa się spod skrzydła ściśniona piechota<br>
-		Długą czarną kolumną, jako lawa błota,<br>
-		Nasypana iskrami bagnetów. Jak sępy<br>
-		Czarne chorągwie na śmierć prowadzą zastępy.<br>
-		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
-		Jak głaz bodzący morze, reduta Ordona.</p>
-		
-		<textarea rows="15" cols="50"></textarea><br>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-		
-	</body>
+<head>
+	<title>Typing test</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+<h1>How fast are your fingers?</h1>
+<h3>You have 30 seconds. Just start typing...</h3>
+<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
+	I spójrzałem na pole; dwieście armat grzmiało.<br>
+	Artyleryi ruskiej ciągną się szeregi,<br>
+	Prosto, długo, daleko, jako morza brzegi;<br>
+	I widziałem ich wodza: przybiegł, mieczem skinął<br>
+	I jak ptak jedno skrzydło wojska swego zwinął;<br>
+	Wylewa się spod skrzydła ściśniona piechota<br>
+	Długą czarną kolumną, jako lawa błota,<br>
+	Nasypana iskrami bagnetów. Jak sępy<br>
+	Czarne chorągwie na śmierć prowadzą zastępy.<br>
+	Przeciw nim sterczy biała, wąska, zaostrzona,<br>
+	Jak głaz bodzący morze, reduta Ordona.</p>
+
+<textarea rows="15" cols="50" onkeypress="myTimer()" id="textarea"></textarea><br>
+
+<script>
+	var timerWorking = false;
+
+	function myTimer() {
+		if(timerWorking === false) setTimeout(() => runningTimeout(), 3000);
+		console.log("Timer is working now.");
+		timerWorking = true;
+	}
+
+	function runningTimeout() {
+		let textArea = document.getElementById("textarea");
+		textArea.disabled = true;
+		let enteredText = textArea.value;
+		let words = enteredText.split(" ").length;
+		let chars = enteredText.replace("\s+", "").length;
+
+		let el = document.createElement("p");
+		el.innerText = "Ilość słów: " + words + ", ilość znaków: " + chars;
+		textArea.parentNode.insertBefore(el, textArea.nextSibling);
+	}
+</script>
+
+</body>
 </html>

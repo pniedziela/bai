@@ -7,22 +7,30 @@
 </head>
 
 <body>
-    <h1>Shopping List</h1>
-    <p>
-        New item: <input type="text" name="item">
-        <button type="button">Add</button>
-    </p>
-    <h3>List of items</h3>
-    <ol>
-        <li>cooking oil</li>
-        <li>breakfast cereal</li>
-        <li>bread</li>
-    </ol>
+<h1>Shopping List</h1>
+<p>
+    New item: <input type="text" name="item">
+    <button type="button" onclick="add(document.getElementsByName('item')[0].value);">Add</button>
+</p>
+<h3>List of items</h3>
+<ol id="myList">
+    <li>cooking oil</li>
+    <li>breakfast cereal</li>
+    <li>bread</li>
+</ol>
 
-    <script>
-    	// a JavaScript code here ...
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    function add(content)
+    {
+        var element = document.createElement("li");
+        element.textContent = content;
+        document.getElementById("myList").appendChild(element);
+        $("li").click(function(){ this.parentNode.removeChild(this); });
+    }
 
-    </script>
+    $("li").click(function(){ this.parentNode.removeChild(this); });
+</script>
 </body>
 
 </html>
