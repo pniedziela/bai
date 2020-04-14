@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>People display</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>People Data</h1>
+<input type="button" value="Show people" onclick="display()">
+<p id="peopleData"></p>
+
+<script>
+    function display(){
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                JSON.parse(xhr.response).map((item, index) => {
+                    let element = document.createElement("div");
+                    element.innerHTML = `${index + 1}. ${item.name} ${item.surname.toUpperCase()}, ${item.country}`;
+                    document.getElementById("peopleData").appendChild(element);
+                })
+            }
+        };
+        xhr.open('GET', 'https://raw.githubusercontent.com/pniedziela/bai/master/04-JSON%26DataTransfer/people.json');
+        xhr.send();
+    }
+</script>
+
+</body>
+</html>
