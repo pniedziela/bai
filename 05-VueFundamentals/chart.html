@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <script>
+<div id="app">
+    <div style="text-align: center;">Populatność języków programowania.</div>
+    <canvas id="myChart"></canvas>
+</div>
+
+
+<script>
+
     var app = new Vue({
-      el: '#app',
-      data: {
-        films: [
-          {
-            language: 'Python',
-            popularity: 25.95
-          },
-          {
-            language: 'Java',
-            popularity: 21.42
-          },
-          {
-            language: 'JavaScript',
-            popularity: 8.26
-          },
-          {
-            language: 'C#',
-            popularity: 7.62
-          },
-          {
-            language: 'Php',
-            popularity: 7.37
-          }
-        ] 
-      }
+        el: '#app',
+        data: {
+            films: [
+                {
+                    language: 'Python',
+                    popularity: 25.95
+                },
+                {
+                    language: 'Java',
+                    popularity: 21.42
+                },
+                {
+                    language: 'JavaScript',
+                    popularity: 8.26
+                },
+                {
+                    language: 'C#',
+                    popularity: 7.62
+                },
+                {
+                    language: 'Php',
+                    popularity: 7.37
+                }
+            ]
+        },
+        computed: {
+            getLanguages : function() {return this.films.map(data => data.language);},
+            getPopularityValues: function() {return this.films.map(data => data.popularity);}
+        }
     });
-  </script>
+    let ctx = document.getElementById("myChart").getContext("2d");
+    let  chart = new Chart(ctx, {type: "bar",
+        data: {
+
+            labels: app.getLanguages,
+            datasets: [
+                {
+                    label: "Popularność",
+                    backgroundColor: ["red", "red", "red", "red", "red"],
+                    data: app.getPopularityValues
+                }
+            ]
+        },
+
+    });
+</script>
 </body>
 </html>

@@ -4,7 +4,15 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>Address</h1>    
+  <h1>Address</h1>
+
+  <div id="app">
+      <div>
+          <p>{{name}} {{surname}}</p>
+          <p>{{address}}</p>
+          <p>{{postcode}} {{city}}</p>
+      </div>
+  </div>
 
   <script>
     var app = new Vue({
@@ -14,10 +22,11 @@
         surname: 'Kownacki',
         address: 'ul. Beskidzka 38',
         postcode: '23-908',
-        city: 'Stalowa Wola'
+        city: 'Stalowa 33-Wola'
       }
     });
   </script>
+
 
 </body>
 </html>

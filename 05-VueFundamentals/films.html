@@ -2,8 +2,35 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        th { width: 150px; height: 30px}
+        table, tr, th, td{border: 1px solid black; border-collapse: collapse; text-align: left}
+        .head {font-weight: bold }
+    </style>
 </head>
 <body>
+
+
+  <div id="app">
+      <table>
+          <tr>
+              <th class="head">Title</th>
+              <th class="head">Year</th>
+              <th class="head">Director</th>
+              <th class="head">Budget</th>
+          </tr>
+          <tr v-for="film in films">
+              <td>{{film.title}}</td>
+              <td>{{film.year}}</td>
+              <td>{{film.director}}</td>
+              <td>{{film.budget}}</td>
+          </tr>
+      </table>
+
+
+  </div>
+
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -35,7 +62,7 @@
           }
         ] 
         }
-      }
+
     });
   </script>
 </body>

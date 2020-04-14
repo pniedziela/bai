@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <b>DO WYKONANIA</b><br>
+    Student's grades: {{grades.toString().split(",").join(" ")}}<br>
+    Average grade: {{averageGrade.toFixed(2)}}
+    <a></a>
+    <a></a>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            grades: [4, 5, 3, 2, 3, 5, 5, 2, 4]
+        },
+        computed: {
+            averageGrade: function() {
+                var sum = this.grades.reduce(function (a,b) {
+                    return a + b;
+                }, 0);
+                var numEls = this.grades.length;
+                var result = sum/numEls;
+                return result;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
